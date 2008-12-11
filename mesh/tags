@@ -1,0 +1,25 @@
+FindMirrorNode	matching.c	/^int FindMirrorNode(int Node,enum dir d)$/
+MatchNode	matching.c	/^int MatchNode(int nd)$/
+SQRT	vars.c	/^double SQRT(double x)$/
+area	misc.c	/^double area(struct nod *na, struct nod *nb, struct nod *nc)$/
+bowyer	misc.c	/^void bowyer(int n, int spac)$/
+circles	misc.c	/^void circles(int e)$/
+classify	misc.c	/^int classify()$/
+diamond	misc.c	/^void diamond()$/
+dist	misc.c	/^double dist(struct nod *na, struct nod *nb)$/
+erase	misc.c	/^void erase()$/
+in_elem	misc.c	/^int in_elem(struct nod *n)$/
+insert_node	mesh.c	/^int insert_node(double x, double y, int spac,$/
+len	matching.c	/^double len(double x,double y) {return (x*x+y*y);}$/
+load	mesh.c	/^int load()$/
+main	mesh.c	/^int main(int argc, char *argv[])$/
+main	testmesh.c	/^int main(int argc,char *argv[])$/
+materials	misc.c	/^void materials()$/
+neighbours	misc.c	/^void neighbours()$/
+new_node	mesh.c	/^void new_node()$/
+relax	misc.c	/^void relax()$/
+renum	renum.c	/^void renum()$/
+save	vars.c	/^int save(char *name)$/
+smooth	misc.c	/^void smooth()$/
+spacing	misc.c	/^void spacing(int e, int n)$/
+swap_side	misc.c	/^void swap_side(int s)$/
