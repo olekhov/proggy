@@ -5,7 +5,7 @@
 #include "matching.h"
 
 
-double len(double x,double y) {return (x*x+y*y);}
+double Distance(double x,double y) {return (x*x+y*y);}
 
 int FindMirrorNode(int Node,enum dir d)
 {
@@ -18,7 +18,7 @@ int FindMirrorNode(int Node,enum dir d)
   {
    for(n=0;n<Nn;n++)
    {
-     dist=len(node[Node].x-node[n].x,node[Node].y+node[n].y);
+     dist=Distance(node[Node].x-node[n].x,node[Node].y+node[n].y);
      if(dist<1e-10) return n;
    }
   }
@@ -27,7 +27,7 @@ int FindMirrorNode(int Node,enum dir d)
   {
    for(n=0;n<Nn;n++)
    {
-     dist=len(node[Node].x+node[n].x,node[Node].y-node[n].y);
+     dist=Distance(node[Node].x+node[n].x,node[Node].y-node[n].y);
      if(dist<1e-10) return n;
    }
   }

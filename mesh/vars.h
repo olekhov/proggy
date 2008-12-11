@@ -1,6 +1,16 @@
 #ifndef __VARS_AND_TYPES__
 #define __VARS_AND_TYPES__
 
+
+#ifndef max
+#define max(a,b) ( (a) > (b) ? (a) : (b) )
+#endif
+
+#ifndef min
+#define min(a,b) ( (a) < (b) ? (a) : (b) )
+#endif
+
+
 #ifndef PI
 #define PI    3.14159265359
 #endif
