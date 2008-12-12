@@ -34,7 +34,7 @@ typedef struct
 
 double len(double x,double y) {return sqrt(x*x+y*y);}
 
-void CalculateDiff(TElement *E,int nE, TPoint *P, int nP, double *cell,double *X,double *dXx, double *dXy)
+void CalculateDiff(TElement *E,int nE, TPoint *P, int nP, double *cell,double *X,double *dXx, double *dXy, double*dEx,double * dEy);
 
 int main(int argc,char *argv[])
 {

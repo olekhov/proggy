@@ -3,11 +3,11 @@ LK=mpicc
 CC_FLAGS=-c -O3
 LK_FLAGS=-lm
 
-all: solver.exe
+all: d_eff.exe
 
-solver.exe: solver.c solver.o DGauss.c DGauss.o
-	$(LK) $(LK_FLAGS) solver.o DGauss.o -o solver.exe
-	cp solver.exe ~/bin
+d_eff.exe: d_eff.c d_eff.o
+	$(LK) $(LK_FLAGS) d_eff.o -o d_eff.exe
+	cp d_eff.exe ~/bin
     
 .c.obj: 
 	$(CC) $(CC_FLAGS) $<
