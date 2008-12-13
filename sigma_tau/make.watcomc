@@ -1,0 +1,14 @@
+CC=cl
+LK=cl
+CC_FLAGS=-c
+LK_FLAGS=
+
+all: sigma_tau.exe
+
+sigma_tau.exe:  sigma_tau.obj 
+    $(LK) $(LK_FLAGS) sigma_tau.obj
+    #solver sq16b.d
+    
+.c.obj: 
+    $(CC) $(CC_FLAGS) $<
+
