@@ -166,6 +166,11 @@ int main(int argc,char *argv[])
   Sigma23[i]=-tau*Dx[i];
  }
 
+ sprintf(buf,"%s.tau",fname);
+ fp=fopen(buf,"w"); fprintf(fp,"%le",tau);
+ fclose(fp);
+
+
  sprintf(buf,"%s.sigma",fname);
  fp=fopen(buf,"w");
  fprintf(fp,"%d\n",nP);
