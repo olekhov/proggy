@@ -1,13 +1,13 @@
-CC=cl
-LK=cl
-CC_FLAGS=-c
-LK_FLAGS=
+CC=mpicc
+LK=mpicc
+CC_FLAGS=-c -O3
+LK_FLAGS=-lm
 
-all: solver_p.exe
+all: solver.exe
 
-solver_p.exe: solver.c solver.obj DGauss.c DGauss.obj
-    $(LK) $(LK_FLAGS) solver.obj DGauss.obj -o solver_p.exe
-    #solver sq16b.d
+solver.exe: solver.c solver.o DGauss.c DGauss.o
+	$(LK) $(LK_FLAGS) solver.o DGauss.o -o solver_p.exe
+	cp solver_p.exe ~/bin
     
 .c.obj: 
-    $(CC) $(CC_FLAGS) $<
+	$(CC) $(CC_FLAGS) $<

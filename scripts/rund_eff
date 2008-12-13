@@ -1,0 +1,2 @@
+#!/bin/sh
+mpirun -np 1 -as single -maxtime 600 d_eff.exe $*
