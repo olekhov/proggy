@@ -11,6 +11,7 @@ void renum()
 {
  int n, o, s, e, e2, c, d, i, j, k, pi,pc=0,ai,bi,ci,di;
  int new_elem=0, new_node=0, new_side=0, next_e, next_s, lowest;
+ int total;
 
  for(n=0; n<Nn; n++) {node[n].new_numb=OFF; node[n].pair=OFF;}
 
@@ -81,8 +82,10 @@ void renum()
 %  Renumeration of nodes  %
 %                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%*/
+ total=0;
  do
   {
+   total++;
    lowest = Nn+Nn;
    next_e = OFF;
 
@@ -174,14 +177,17 @@ void renum()
   }
  // до тех пор, пока элементы есть
  while(next_e != OFF);
+ printf("done with nodes, total:%d\n",total);
 
 /*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             %
 %  Renumeration of triangles  %
 %                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+total=0;
  do
   {
+   total++;
    lowest = Nn+Nn+Nn;
    next_e = OFF;
 
@@ -205,6 +211,7 @@ void renum()
     }
   }
  while(next_e != OFF);
+ printf("done with triangles, total:%d\n",total);
 
 
 
@@ -213,8 +220,10 @@ void renum()
 %  Renumeration of sides  %
 %                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%*/
+total=0;
  do
   {
+   total++;
    lowest = Nn+Nn;
    next_s = OFF;
 
@@ -238,5 +247,6 @@ void renum()
 
   }
  while(next_s != OFF);
+ printf("done with sides, total:%d\n",total);
 
 }
