@@ -26,7 +26,7 @@
 #define WAITING 5
 
 
-#define MAX_NODES 50000
+#define MAX_NODES 150000
 /*-----------------------------+
 |  definitions for the chains  |
 +-----------------------------*/

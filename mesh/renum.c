@@ -86,6 +86,7 @@ void renum()
  do
   {
    total++;
+   if(total%1000==0) printf("total: %dk\n",total/1000);
    lowest = Nn+Nn;
    next_e = OFF;
 
@@ -188,6 +189,7 @@ total=0;
  do
   {
    total++;
+   if(total%1000==0) printf("total: %dk\n",total/1000);
    lowest = Nn+Nn+Nn;
    next_e = OFF;
 
@@ -224,6 +226,7 @@ total=0;
  do
   {
    total++;
+   if(total%1000==0) printf("total: %dk\n",total/1000);
    lowest = Nn+Nn;
    next_s = OFF;
 
