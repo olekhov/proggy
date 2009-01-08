@@ -17,6 +17,7 @@ int insert_node(double x, double y, int spac,
  int    i,j,k,en, n, e,ei,ej,ek, s,si,sj,sk;
  double sx, sy;
 
+// printf("inserting node..\n");
  Nn++;          /* one new node */
  
  node[Nn-1].x = x;
@@ -24,9 +25,12 @@ int insert_node(double x, double y, int spac,
  node[Nn-1].mark = mark;
 
 /* find the element which contains new node */ 
+// printf("finding element\n");
  e = in_elem(&node[Nn-1]);
 
 /* calculate the spacing function in the new node */
+// printf("spacing\n");
+
  if(spac==ON)
    spacing(e, Nn-1);
 
@@ -64,6 +68,8 @@ int insert_node(double x, double y, int spac,
  side[Ns-1].a =i;    side[Ns-1].b =k;        /* a-b */
  side[Ns-1].ea=Ne-1; side[Ns-1].eb=e;       
 
+// printf("before for \n");
+
  for(s=1; s<=3; s++)
   {sx = node[side[Ns-s].c].x - node[side[Ns-s].d].x;
    sy = node[side[Ns-s].c].y - node[side[Ns-s].d].y;
@@ -96,9 +102,12 @@ int insert_node(double x, double y, int spac,
 
 /* Find circumenters for two new elements, 
    and for the one who's segment has changed */
+// printf("before circles\n");
  circles(e);
  circles(Ne-2);
  circles(Ne-1);
+
+// printf("before bowyer\n");
 
  bowyer(Nn-1, spac);
 
@@ -375,11 +384,13 @@ int load()
 
  for(c=0; c<chains; c++)
   {
+   printf("%d chain\n",c);
+
    for(s=chain[c].s0; s<=chain[c].s1; s++)
     {
      xO=point[segment[s].n0].x; yO=point[segment[s].n0].y;
      xN=point[segment[s].n1].x; yN=point[segment[s].n1].y; 
-//     printf("first point\n");
+      printf("first point\n");
 /*===============
 *  first point  *
 ===============*/
@@ -400,7 +411,7 @@ int load()
      insert_node(xO, yO, OFF,
      Nn-1, segment[s-1].mark, point[segment[s].n0].mark, OFF, OFF);
     }
-
+//     printf("we're in the middle\n");
        node[Nn-1].next     = Nn;     /* Nn-1 is index of inserted node */
        node[Nn-1].chain    = segment[s].chain;
        node[Nn-1].F        = point[segment[s].n0].F;
@@ -417,7 +428,7 @@ int load()
        else
     {M=+segment[s].N/2; ddL=(dLm-point[segment[s].n0].F)/M;}
       }
-//     printf("middle points: %d stuk\n",abs(segment[s].N)-1);
+//      printf("middle points: %d stuk\n",abs(segment[s].N)-1);
 
 //     printf("%7.5lf+%7.5lf<=%7.5lf\n",point[segment[s].n0].F,point[segment[s].n1].F,L);
 /*=================
@@ -428,7 +439,7 @@ int load()
      {
        for(m=1; m<abs(segment[s].N); m++)
     {
-//     printf("middle point being inserted (%d):\n",L_tot);
+//     printf("middle point being inserted (%lf):\n",L_tot);
      L_tot+=(dLm-M*ddL);
   
      if(point[segment[s].n0].F > point[segment[s].n1].F)
@@ -440,7 +451,7 @@ int load()
       {insert_node(xO+Lx/L*L_tot, yO+Ly/L*L_tot, OFF,
        Nn-1, segment[s].mark, segment[s].mark, segment[s].mark, point[segment[s].n1].new_numb);
        node[Nn-1].next = Nn;
-       printf("last segment on side inserted: %le,%le...\n", node[Nn-1].x, node[Nn-1].y);
+//       printf("last segment on side inserted: %le,%le...\n", node[Nn-1].x, node[Nn-1].y);
        }
      
      else if(m==1)
@@ -481,6 +492,7 @@ int load()
 
  free(segment);
  free(inserted);
+ printf("done with domain points\n");
 
  return 0;
 }
@@ -528,6 +540,9 @@ int main(int argc, char *argv[])
   return -1;
  } else printf("memory allocated\n");
 */
+ printf("allocating dynamic memory...\n");
+ init_vars();
+ printf("ok.\n");
  strcat(name, ".d");
  len=strlen(name);
 

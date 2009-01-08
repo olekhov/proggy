@@ -17,6 +17,7 @@ void renum()
 
  for(e=0; e<Ne; e++) elem[e].new_numb=OFF;
  for(s=0; s<Ns; s++) side[s].new_numb=OFF;
+printf("renum..\n");
 
  if(periodic)
  {

@@ -5,16 +5,27 @@
 #include "vars.h"
 
 
-struct ele elem[MAX_NODES*2];
+struct ele *elem;
+struct sid *side;
+struct nod *node, *point;
 
 
-struct sid side[MAX_NODES*3];
-
-
-struct nod node[MAX_NODES], point[MAX_NODES/2];
 struct seg *segment;
 struct chai  *chain;
 int Ne, Nn, Ns, Nc;             /* number of: elements, nodes, sides, chains */
+
+
+int init_vars(void)
+{
+  elem=(struct ele*)malloc(MAX_NODES*2*sizeof(struct ele));
+  side=(struct sid*)malloc(MAX_NODES*3*sizeof(struct sid));
+  node=(struct nod*)malloc(MAX_NODES*sizeof(struct nod));
+  point=(struct nod*)malloc(MAX_NODES/2*sizeof(struct nod));
+  return 0;
+}
+
+
+
 /*=========================================================================*/
 int save(char *name)
 {

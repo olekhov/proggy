@@ -93,12 +93,13 @@ struct seg
   {int n0, n1;
    int N; int chain; int bound; int mark;};
 
+
  
 struct chai {int s0, s1, type;};
 
-extern struct sid side[];
-extern struct nod node[], point[];
-extern struct ele elem[];
+extern struct sid *side;
+extern struct nod *node, *point;
+extern struct ele *elem;
 extern struct chai *chain;
 extern struct seg *segment;
 
@@ -109,4 +110,5 @@ int save(char *name);
 
 double SQRT(double x);
 
+int init_vars(void);
 #endif

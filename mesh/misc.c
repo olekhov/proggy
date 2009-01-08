@@ -25,7 +25,7 @@ double dist(struct nod *na, struct nod *nb)
 int in_elem(struct nod *n)
 {
  int e;
- 
+// printf("in elem: %d\n",Ne);
  for(e=0; e<Ne; e++)    /* This must search through all elements ?? */
   {
    if(    area(n, &node[elem[e].i], &node[elem[e].j]) >= 0.0
