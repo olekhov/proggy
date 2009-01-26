@@ -3,7 +3,10 @@ LK=cl
 CC_FLAGS=/c
 LK_FLAGS=
 
-all: mesh2eps.exe dmesh2eps.exe
+all: mesh2eps.exe dmesh2eps.exe gmesh2eps.exe
+
+gmesh2eps.exe: gmesh2eps.obj
+    $(LK) $(LK_FLAGS) gmesh2eps.obj
 
 mesh2eps.exe: mesh2eps.obj
     $(LK) $(LK_FLAGS) mesh2eps.obj
