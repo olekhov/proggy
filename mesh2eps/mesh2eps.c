@@ -3,6 +3,8 @@
 #include <math.h>
 #include <string.h>
 
+#include "minmax.h"
+
 typedef struct 
 { 
    double x,y;
@@ -18,6 +20,8 @@ typedef struct
 {
   int i,j,k,mark;
 } Elem;
+
+
 
 char epsfname[80];
 Side BBox[2]={{0,0},{400,400}};

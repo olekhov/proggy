@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include "minmax.h"
 
 typedef struct 
 { 

@@ -1,21 +1,21 @@
-CC=cl
-LK=cl
-CC_FLAGS=/c
-LK_FLAGS=
+CC=gcc
+LK=gcc
+CC_FLAGS=-c -O3
+LK_FLAGS=-lm
 
 all: mesh2eps.exe dmesh2eps.exe gmesh2eps.exe
 
-gmesh2eps.exe: gmesh2eps.obj
-    $(LK) $(LK_FLAGS) gmesh2eps.obj
+gmesh2eps.exe: gmesh2eps.o
+	$(LK) $(LK_FLAGS) gmesh2eps.o -o gmesh2eps.exe
 
-mesh2eps.exe: mesh2eps.obj
-    $(LK) $(LK_FLAGS) mesh2eps.obj
+mesh2eps.exe: mesh2eps.o
+	$(LK) $(LK_FLAGS) mesh2eps.o -o mesh2eps.exe
 
-dmesh2eps.exe: dmesh2eps.obj
-    $(LK) $(LK_FLAGS) dmesh2eps.obj
+dmesh2eps.exe: dmesh2eps.o
+	$(LK) $(LK_FLAGS) dmesh2eps.o -o dmesh2eps.exe
 
-e_mesh2eps.exe: e_mesh2eps.obj
-    $(LK) $(LK_FLAGS) e_mesh2eps.obj
+e_mesh2eps.exe: e_mesh2eps.o
+	$(LK) $(LK_FLAGS) e_mesh2eps.o -o e_mesh2eps.exe
 
 .c.obj:
-    $(CC) $(CC_FLAGS) $<
+	$(CC) $(CC_FLAGS) $<
