@@ -76,7 +76,7 @@ int main(int argc,char *argv[])
  fp=fopen(buf,"r");
  if(fp==NULL)
  {
-  printf("Не найден файл с эффективными характеристиками\n");
+  printf("╨Э╨╡ ╨╜╨░╨╣╨┤╨╡╨╜ ╤Д╨░╨╣╨╗ ╤Б ╤Н╤Д╤Д╨╡╨║╤В╨╕╨▓╨╜╤Л╨╝╨╕ ╤Е╨░╤А╨░╨║╤В╨╡╤А╨╕╤Б╤В╨╕╨║╨░╨╝╨╕\n");
   return -1;
  }
  fscanf(fp,"%le %le %le %le",&D11,&D12,&D21,&D22);
@@ -86,7 +86,7 @@ int main(int argc,char *argv[])
  fp=fopen(buf,"r");
  if(!fp)
  {
-  printf("Триангуляция не построена! используйте Mesh.exe\n");
+  printf("╨в╤А╨╕╨░╨╜╨│╤Г╨╗╤П╤Ж╨╕╤П ╨╜╨╡ ╨┐╨╛╤Б╤В╤А╨╛╨╡╨╜╨░! ╨╕╤Б╨┐╨╛╨╗╤М╨╖╤Г╨╣╤В╨╡ Mesh.exe\n");
   return -1;
  }
  fscanf(fp,"%d",&nP);
@@ -152,17 +152,17 @@ int main(int argc,char *argv[])
  dXy=malloc(nP*sizeof(double));
  if(!K || !F || !X || !dXx || !dXy)
  {
-   printf("Ошибка выделения памяти.\n");
+   printf("╨Ю╤И╨╕╨▒╨║╨░ ╨▓╤Л╨┤╨╡╨╗╨╡╨╜╨╕╤П ╨┐╨░╨╝╤П╤В╨╕.\n");
    return -1;
  }
  invar1=invar2=0;
  l1=l2=0;
  // ===============================================
- // Решение для N1
+ // ╨а╨╡╤И╨╡╨╜╨╕╨╡ ╨┤╨╗╤П N1
  for(i=0;i<nP*(2*Diag+1);i++) K[i]=0;
  for(i=0;i<nP;i++) F[i]=0;
  for(i=0;i<nP;i++) X[i]=0;
- // построение матрицы жёсткости
+ // ╨┐╨╛╤Б╤В╤А╨╛╨╡╨╜╨╕╨╡ ╨╝╨░╤В╤А╨╕╤Ж╤Л ╨╢╤С╤Б╤В╨║╨╛╤Б╤В╨╕
  for(e=0;e<nE;e++)
  {
   i=E[e].i; j=E[e].j; k=E[e].k;
@@ -170,7 +170,7 @@ int main(int argc,char *argv[])
 
   if(E[e].mark<0)
   {
-   printf("Не все подобласти имеют материал!\n");
+   printf("╨Э╨╡ ╨▓╤Б╨╡ ╨┐╨╛╨┤╨╛╨▒╨╗╨░╤Б╤В╨╕ ╨╕╨╝╨╡╤О╤В ╨╝╨░╤В╨╡╤А╨╕╨░╨╗!\n");
    return -1;
   }
 
@@ -193,7 +193,7 @@ int main(int argc,char *argv[])
 
  }
 
- // задание краевого условия
+ // ╨╖╨░╨┤╨░╨╜╨╕╨╡ ╨║╤А╨░╨╡╨▓╨╛╨│╨╛ ╤Г╤Б╨╗╨╛╨▓╨╕╤П
  for(i=0;i<nP;i++)
  {
   if(P[i].mark==1)
@@ -209,7 +209,7 @@ int main(int argc,char *argv[])
 // PM(K,nP,Diag,F);
  // ===============================================
 
- printf("Нахождение решения Psi0..");
+ printf("╨Э╨░╤Е╨╛╨╢╨┤╨╡╨╜╨╕╨╡ ╤А╨╡╤И╨╡╨╜╨╕╤П Psi0..");
  DiagGSolve(K,nP,Diag,X,F);
  printf("Ok\n");
  sprintf(buf,"%s.psi0",fname);
@@ -231,7 +231,7 @@ int main(int argc,char *argv[])
  printf("Max psi0: %le\n",maxn);
  fclose(fp);
 
- printf("Нахождение решения dPsi0..");
+ printf("╨Э╨░╤Е╨╛╨╢╨┤╨╡╨╜╨╕╨╡ ╤А╨╡╤И╨╡╨╜╨╕╤П dPsi0..");
  CalculateDiff(E,nE,P,nP,cell,X,dXx,dXy);
 
 
@@ -268,13 +268,13 @@ void CalculateDiff(TElement *E,int nE, TPoint *P, int nP, double *cell,double *X
  dEx=malloc(nE*sizeof(double));
  dEy=malloc(nE*sizeof(double));
 
- // Вычисление значений производных на элементах
+ // ╨Т╤Л╤З╨╕╤Б╨╗╨╡╨╜╨╕╨╡ ╨╖╨╜╨░╤З╨╡╨╜╨╕╨╣ ╨┐╤А╨╛╨╕╨╖╨▓╨╛╨┤╨╜╤Л╤Е ╨╜╨░ ╤Н╨╗╨╡╨╝╨╡╨╜╤В╨░╤Е
  for(e=0;e<nE;e++)
  {
   dEx[e]=(X[E[e].i]*E[e].bi+X[E[e].j]*E[e].bj+X[E[e].k]*E[e].bk)/2/E[e].A;
   dEy[e]=(X[E[e].i]*E[e].ci+X[E[e].j]*E[e].cj+X[E[e].k]*E[e].ck)/2/E[e].A;
  }
- // выставление производных
+ // ╨▓╤Л╤Б╤В╨░╨▓╨╗╨╡╨╜╨╕╨╡ ╨┐╤А╨╛╨╕╨╖╨▓╨╛╨┤╨╜╤Л╤Е
 
  for(e=0;e<nE;e++)
  {
