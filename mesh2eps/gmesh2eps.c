@@ -117,7 +117,7 @@ int main(int argc,char *argv[])
  printf("Points...\n");
  sprintf(buf,"%s.n",fname);
  fp=fopen(buf,"r");
- fscanf(fp,"%d",&nP); // ™Æ´®Á•·‚¢Æ ‚ÆÁ•™
+ fscanf(fp,"%d",&nP); // –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —Ç–æ—á–µ–∫
  P=malloc(nP*sizeof(Point));
  for(i=0;i<nP;i++) fscanf(fp,"%lf %lf %d",&P[i].x,&P[i].y,&idummy);
  fclose(fp);
@@ -166,7 +166,7 @@ int main(int argc,char *argv[])
    arg=3;
  } else
  {
-  printf("ç• „™†ß†≠† ‰„≠™Ê®Ô\n");
+  printf("–ù–µ —É–∫–∞–∑–∞–Ω–∞ —Ñ—É–Ω–∫—Ü–∏—è\n");
   return -1;
  }
 
@@ -174,7 +174,7 @@ int main(int argc,char *argv[])
 
 
  fp=fopen(buf,"r");
- fscanf(fp,"%d",&nP); // ™Æ´®Á•·‚¢Æ ‚ÆÁ•™
+ fscanf(fp,"%d",&nP); // –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —Ç–æ—á–µ–∫
  Data=malloc(nP*sizeof(double));
 
  for(i=0;i<nP;i++) 
@@ -197,7 +197,7 @@ int main(int argc,char *argv[])
 
  sprintf(buf,"%s.e",fname);
  fp=fopen(buf,"r");
- fscanf(fp,"%d",&nE); // ™Æ´®Á•·‚¢Æ Ì´•¨•≠‚Æ¢
+ fscanf(fp,"%d",&nE); // –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —ç–ª–µ–º–µ–Ω—Ç–æ–≤
  E=malloc(nE*sizeof(Elem));
  for(i=0;i<nE;i++) 
  {
@@ -211,7 +211,7 @@ int main(int argc,char *argv[])
 
  sprintf(buf,"%s.s",fname);
  fp=fopen(buf,"r");
- fscanf(fp,"%d",&nS); // ™Æ´®Á•·‚¢Æ Æ‚‡•ß™Æ¢
+ fscanf(fp,"%d",&nS); // –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ –æ—Ç—Ä–µ–∑–∫–æ–≤
  S=malloc(nS*sizeof(Side));
  for(i=0;i<nS;i++) fscanf(fp,"%d %d %d %d %lf %lf %d",&S[i].i,&S[i].j,&idummy,&idummy,&ddummy,&ddummy,&S[i].mark);
  fclose(fp);
@@ -254,8 +254,8 @@ void writeleadin(FILE *fp)
 
 
   fprintf(fp,"0.00 0.00 0.00 1.00 K\n");
-  fprintf(fp,"0 setlinejoin\n"); // Miter join - ‰Æ‡¨† ·‚Î™† §¢„Â Æ‚‡•ß™Æ¢
-  // Ø‡Ô¨Æ„£Æ´Ï≠†Ô ‡†¨™† ØÆ BoundingBox
+  fprintf(fp,"0 setlinejoin\n"); // Miter join - —Ñ–æ—Ä–º–∞ —Å—Ç—ã–∫–∞ –¥–≤—É—Ö –æ—Ç—Ä–µ–∑–∫–æ–≤
+  // –ø—Ä—è–º–æ—É–≥–æ–ª—å–Ω–∞—è —Ä–∞–º–∫–∞ –ø–æ BoundingBox
  // fprintf(fp,"n 0 0 m %d 0 l %d %d l 0 %d l 0 0 l s\n",x,x,y,y); 
 }
 void writeleadout(FILE *fp)
@@ -270,7 +270,7 @@ void ShowDomain(FILE *fp,Point*P,int nP, Side*S,int nS,double minx, double miny,
 {
   int s,p,x,y;
 
-  fprintf(fp,"5.0 setlinewidth\n"); // ‚Æ´È®≠† ´®≠®©. ≠† ‚Æ´È®≠„ ¢´®Ô•‚ ¨†·Ë‚†°
+  fprintf(fp,"5.0 setlinewidth\n"); // —Ç–æ–ª—â–∏–Ω–∞ –ª–∏–Ω–∏–π. –Ω–∞ —Ç–æ–ª—â–∏–Ω—É –≤–ª–∏—è–µ—Ç –º–∞—Å—à—Ç–∞–±
   for(s=0;s<nS;s++)
   {
    if (S[s].mark==0) continue;
@@ -322,7 +322,7 @@ void WriteContour(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double h,
 
   ij=di*dj; jk=dj*dk; ki=dk*di;
 
-  // Ö·´® Ì´•¨•≠‚ ≠• Ø•‡•·•™†•‚·Ô c „‡Æ¢≠•¨ - Ø‡ÆØ„·™†•¨
+  // –ï—Å–ª–∏ —ç–ª–µ–º–µ–Ω—Ç –Ω–µ –ø–µ—Ä–µ—Å–µ–∫–∞–µ—Ç—Å—è c —É—Ä–æ–≤–Ω–µ–º - –ø—Ä–æ–ø—É—Å–∫–∞–µ–º
   if(ij>=0 && jk>=0 && ki>=0) continue;
 
   if(ij>0) // j--k, k--i
@@ -373,12 +373,12 @@ void WriteContours(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double da
  double h,step;
 
  step=(datamax-datamin)/heights;
- fprintf(fp,"1.0 setlinewidth\n"); // ‚Æ´È®≠† ´®≠®©. ≠† ‚Æ´È®≠„ ¢´®Ô•‚ ¨†·Ë‚†°
+ fprintf(fp,"1.0 setlinewidth\n"); // —Ç–æ–ª—â–∏–Ω–∞ –ª–∏–Ω–∏–π. –Ω–∞ —Ç–æ–ª—â–∏–Ω—É –≤–ª–∏—è–µ—Ç –º–∞—Å—à—Ç–∞–±
  for(h=step;h>=datamin;h-=step)
   WriteContour(fp,P,nP,E,nE,Data,h,minx,miny,maxx,maxy,Rx,Ry);
  for(h=step;h<=datamax;h+=step)
   WriteContour(fp,P,nP,E,nE,Data,h,minx,miny,maxx,maxy,Rx,Ry);
- fprintf(fp,"7.0 setlinewidth\n"); // ‚Æ´È®≠† ´®≠®©. ≠† ‚Æ´È®≠„ ¢´®Ô•‚ ¨†·Ë‚†°
+ fprintf(fp,"7.0 setlinewidth\n"); // —Ç–æ–ª—â–∏–Ω–∞ –ª–∏–Ω–∏–π. –Ω–∞ —Ç–æ–ª—â–∏–Ω—É –≤–ª–∏—è–µ—Ç –º–∞—Å—à—Ç–∞–±
  WriteContour(fp,P,nP,E,nE,Data,0,minx,miny,maxx,maxy,Rx,Ry);
 }
 
@@ -424,11 +424,11 @@ int WriteEPS(Point *P,int nP, Side *S,Elem *E,int nS, int nE)
   double lastwidth,width;
   char *color[]=
   {
-    "0 0 0 0 k",             // °•´Î©
-    "0.33 0.33 0.25 0.00 k", // ‰®Æ´•‚Æ¢Î©
-    "0.33 0.02 0.00 0.00 k", // ß•´Ò≠Î©
-    "0.05 0.00 0.33 0.00 k", // ¶Ò´‚Î©
-    "0.15 0.33 0.33 0.00 k"  // ™‡†·≠Î©
+    "0 0 0 0 k",             // –±–µ–ª—ã–π
+    "0.33 0.33 0.25 0.00 k", // —Ñ–∏–æ–ª–µ—Ç–æ–≤—ã–π
+    "0.33 0.02 0.00 0.00 k", // –∑–µ–ª—ë–Ω—ã–π
+    "0.05 0.00 0.33 0.00 k", // –∂—ë–ª—Ç—ã–π
+    "0.15 0.33 0.33 0.00 k"  // –∫—Ä–∞—Å–Ω—ã–π
   };
 
   fp=fopen(epsfname,"w");
@@ -460,7 +460,7 @@ int WriteEPS(Point *P,int nP, Side *S,Elem *E,int nS, int nE)
   Rx=BBox[1].i*10;
   Ry=BBox[1].j*10;
   writeleadin(fp);
-  fprintf(fp,"%14.13lf %14.13lf scale\n",1.0/scale,1.0/scale); // ¨†·Ë‚†°®‡Æ¢†≠®• - ™ÆÆ‡§®≠†‚Î Ê•´Î•
+  fprintf(fp,"%14.13lf %14.13lf scale\n",1.0/scale,1.0/scale); // –º–∞—Å—à—Ç–∞–±–∏—Ä–æ–≤–∞–Ω–∏–µ - –∫–æ–æ—Ä–¥–∏–Ω–∞—Ç—ã —Ü–µ–ª—ã–µ
   lastwidth=-1;
   width=0.5;
   if(!noshade) WriteHeightMap(fp,P,nP,E,nE,minx,miny,maxx,maxy,Rx,Ry);
@@ -527,11 +527,12 @@ int ReadPalette(char *fname)
   int i;
   if(fp==NULL)
   {
-   printf("ç•¢Æß¨Æ¶≠Æ Æ‚™‡Î‚Ï ‰†©´ · Ø†´®‚‡Æ© [%s]\n",fname);
+   printf("–ù–µ–≤–æ–∑–º–æ–∂–Ω–æ –æ—Ç–∫—Ä—ã—Ç—å —Ñ–∞–π–ª —Å –ø–∞–ª–∏—Ç—Ä–æ–π [%s]\n",fname);
    return -1;
   }
 //  printf("%s\n",fname);
   fscanf(fp,"%d",&PalSize);
+  printf("palsize=%d\n",PalSize);
   palette=malloc(PalSize*sizeof(TRGBColor));
   for(i=0;i<PalSize;i++)
   {
