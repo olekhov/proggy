@@ -41,7 +41,8 @@ typedef struct
   double D11,D12,D21,D22;
 } TMaterial;
 
-double len(double x,double y) {return sqrt(x*x+y*y);}
+//double len(double x,double y) {return sqrt(x*x+y*y);}
+
 int main(int argc,char *argv[])
 {
  FILE *fp;
@@ -62,7 +63,7 @@ int main(int argc,char *argv[])
 // double D11i=0,D12i=0,D21i=0,D22i=1.0/40; // inside
  TMaterial *Mat;
  int nMat;
- double D11,D12,D21,D22,A,Q,mul,x,y;
+ double D11,D12,D21,D22,A,Q,x,y;
 
  if(argc==1) { printf("argument missing\n"); return -1; }
  sscanf(argv[1],"%s",fname);
@@ -196,7 +197,7 @@ int main(int argc,char *argv[])
     mb1=  eb >=0 ? Mat[E[eb].mark].D11 :0;
     mb2=  eb >=0 ? Mat[E[eb].mark].D12 :0;
 
-    if(ma1==0 || mb1==0)
+    if(fabs(ma1)<=0 || fabs(mb1)<=0)
     {
      printf("got 0\n");
     }
@@ -224,7 +225,7 @@ int main(int argc,char *argv[])
     mb1=  eb >=0 ? Mat[E[eb].mark].D11 :0;
     mb2=  eb >=0 ? Mat[E[eb].mark].D12 :0;
 
-    if(ma1==0 || mb1==0)
+    if(fabs(ma1)<=0 || fabs(mb1)<=0)
     {
      printf("got 0\n");
     }
@@ -248,7 +249,7 @@ int main(int argc,char *argv[])
     ma2=  ea >=0 ? Mat[E[ea].mark].D12 :0;
     mb1=  eb >=0 ? Mat[E[eb].mark].D11 :0;
     mb2=  eb >=0 ? Mat[E[eb].mark].D12 :0;
-    if(ma1==0 || mb1==0)
+    if(fabs(ma1)<=0 || fabs(mb1)<=0)
     {
      printf("got 0\n");
     }

@@ -5,7 +5,9 @@
 #include "matching.h"
 
 
-double Distance(double x,double y) {return (x*x+y*y);}
+double Distance(double x,double y) ;
+double Distance(double x,double y) 
+{return (x*x+y*y);}
 
 int FindMirrorNode(int Node,enum dir d)
 {
@@ -32,6 +34,8 @@ int FindMirrorNode(int Node,enum dir d)
    }
   }
   break;
+  default:
+  printf("Wooopes!\n");
   }
 
   printf("Wooopes!\n");
@@ -43,29 +47,29 @@ int FindMirrorNode(int Node,enum dir d)
 int MatchNode(int nd)
 {
 
-  if( (node[nd].x==-1) && (node[nd].y==-1))
+  if( fabs(node[nd].x+1)+fabs(node[nd].y+1)<1e-10)
   {
     nd=FindMirrorNode(nd,UPDOWN);
     if(nd==-1) {printf("NodeLinking fails\n"); exit(1); }
     nd=FindMirrorNode(nd,LEFTRIGHT);
     if(nd==-1) {printf("NodeLinking fails\n"); exit(1); }
   } else
-  if( (node[nd].x==-1) && (node[nd].y==1))
+  if( fabs(node[nd].x+1)+fabs(node[nd].y-1)<1e-10)
   {
     nd=FindMirrorNode(nd,LEFTRIGHT);
     if(nd==-1) {printf("NodeLinking fails\n"); exit(1); }
   } else
-  if( (node[nd].x==1) && (node[nd].y==-1))
+  if( fabs(node[nd].x-1)+fabs(node[nd].y+1)<1e-10)
   {
     nd=FindMirrorNode(nd,UPDOWN);
     if(nd==-1) {printf("NodeLinking fails\n"); exit(1); }
   } else
-  if (fabs(node[nd].x)==1)
+  if( fabs(fabs(node[nd].x)-1)<1e-10)
   {
     nd=FindMirrorNode(nd,LEFTRIGHT);
     if(nd==-1) {printf("NodeLinking fails\n"); exit(1); }
   } else
-  if (fabs(node[nd].y)==1)
+  if( fabs(fabs(node[nd].x)-1)<1e-10)
   {
     nd=FindMirrorNode(nd,UPDOWN);
     if(nd==-1) {printf("NodeLinking fails\n"); exit(1); }

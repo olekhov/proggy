@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <math.h>
 #include "minmax.h"
@@ -15,7 +16,7 @@ typedef struct
 } Side;
 
 char epsfname[80];
-Side BBox[2]={{0,0},{400,400}};
+Side BBox[2]={{0,0,0},{400,400,0}};
 Point viewport[2];
 int hasviewport=0;
 void writeleadin(FILE *fp);
@@ -71,7 +72,7 @@ int main(int argc,char *argv[])
 
 void writeleadin(FILE *fp)
 {
-  int x=BBox[1].i,y=BBox[1].j;
+//  int x=BBox[1].i,y=BBox[1].j;
   fprintf(fp,"%s\n","%!PS");
   fprintf(fp,"%s\n","%%Creator: - Created by Mesh2EPS mesh converter Copyright 2002, 2003 Basilio");
   fprintf(fp,"%s %s\n","%%Title:",epsfname);
@@ -133,7 +134,8 @@ int WriteEPS(Point *P,int nP, Side *S,int nS)
   writeleadin(fp);
   fprintf(fp,"%14.13lf %14.13lf scale\n",0.1,0.1); // масштабирование - координаты целые
   lastwidth=-1;
-  fprintf(fp,"15.0 setlinewidth\n",width); // толщина линий. на толщину влияет масштаб
+  width=15;
+  fprintf(fp,"15.0 setlinewidth\n"); // толщина линий. на толщину влияет масштаб
   for(s=0;s<nS;s++)
   {
    if (S[s].mark==0) continue;
@@ -165,4 +167,5 @@ int WriteEPS(Point *P,int nP, Side *S,int nS)
 //  fprintf(fp,"s\n"); // stroke
   writeleadout(fp);
   fclose(fp);
+  return 0;
 }

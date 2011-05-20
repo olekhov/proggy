@@ -31,10 +31,11 @@ int PalSize;
 int palx=410, paly=10,palsx=40,palsy=35,palspace=40,scale=10;
 
 TRGBColor black={0,0,0}, white={1,1,1};
+int  ReadPalette(char*);
 
 
 char epsfname[580];
-Side BBox[2]={{0,0},{400,400}};
+Side BBox[2]={{0,0,0},{400,400,0}};
 Point viewport[2];
 int hasviewport=0;
 void writeleadin(FILE *fp);
@@ -227,7 +228,7 @@ int main(int argc,char *argv[])
 
 void writeleadin(FILE *fp)
 {
-  int x=BBox[1].i,y=BBox[1].j;
+  //int x=BBox[1].i,y=BBox[1].j;
   fprintf(fp,"%s\n","%!PS");
   fprintf(fp,"%s\n","%%Creator: - Created by Mesh2EPS mesh converter Copyright 2002, 2003 Basilio");
   fprintf(fp,"%s %s\n","%%Title:",epsfname);
@@ -266,10 +267,12 @@ void writeleadout(FILE *fp)
 }
 
 void ShowDomain(FILE *fp,Point*P,int nP, Side*S,int nS,double minx, double miny, double maxx, double maxy,
+    double Rx, double Ry);
+void ShowDomain(FILE *fp,Point*P,int nP, Side*S,int nS,double minx, double miny, double maxx, double maxy,
     double Rx, double Ry)
 {
   int s,p,x,y;
-
+  nP=nP;
   fprintf(fp,"5.0 setlinewidth\n"); // толщина линий. на толщину влияет масштаб
   for(s=0;s<nS;s++)
   {
@@ -307,12 +310,16 @@ void ShowDomain(FILE *fp,Point*P,int nP, Side*S,int nS,double minx, double miny,
 
 void WriteContour(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double h, 
     double minx, double miny, double maxx, double maxy,
+    double Rx, double Ry);
+void WriteContour(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double h, 
+    double minx, double miny, double maxx, double maxy,
     double Rx, double Ry)
 
 {
  int e,i,j,k,x,y;
  double di,dj,dk,ij,jk,ki;
  double sx,sy,ex,ey;
+ nP=nP;
 
  for(e=0;e<nE;e++)
  {
@@ -367,10 +374,15 @@ void WriteContour(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double h,
 void WriteContours(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double datamin, double datamax,
  int heights, 
     double minx, double miny, double maxx, double maxy,
+    double Rx, double Ry);
+void WriteContours(FILE*fp,Point*P,int nP, Elem*E,int nE,double *Data, double datamin, double datamax,
+ int heights, 
+    double minx, double miny, double maxx, double maxy,
     double Rx, double Ry)
 
 {
  double h,step;
+ nP=nP;
 
  step=(datamax-datamin)/heights;
  fprintf(fp,"1.0 setlinewidth\n"); // толщина линий. на толщину влияет масштаб
@@ -386,11 +398,15 @@ TRGBColor BlendColor(double x,double min,double max,TRGBColor *palette, int N);
 
 int WriteHeightMap(FILE *fp,Point *P,int nP, Elem*E, int nE, 
     double minx, double miny, double maxx, double maxy,
+    double Rx, double Ry);
+int WriteHeightMap(FILE *fp,Point *P,int nP, Elem*E, int nE, 
+    double minx, double miny, double maxx, double maxy,
     double Rx, double Ry)
 {
  int e,i,j,k,x,y;
  TRGBColor c1,c2,c3;
  double n1,n2,n3;
+ nP=nP;
 
  for(e=0;e<nE;e++)
  {
@@ -415,21 +431,14 @@ int WriteHeightMap(FILE *fp,Point *P,int nP, Elem*E, int nE,
 }
 
 
+int WriteEPS(Point *P,int nP, Side *S,Elem *E,int nS, int nE);
 int WriteEPS(Point *P,int nP, Side *S,Elem *E,int nS, int nE)
 {
   FILE *fp;
   double maxx,maxy,minx,miny,Rx,Ry;
-  int s,p; 
-  int x,y,flag;
+  int p; 
+  int flag;
   double lastwidth,width;
-  char *color[]=
-  {
-    "0 0 0 0 k",             // белый
-    "0.33 0.33 0.25 0.00 k", // фиолетовый
-    "0.33 0.02 0.00 0.00 k", // зелёный
-    "0.05 0.00 0.33 0.00 k", // жёлтый
-    "0.15 0.33 0.33 0.00 k"  // красный
-  };
 
   fp=fopen(epsfname,"w");
   flag=0;
@@ -486,7 +495,7 @@ TRGBColor BlendColor(double x,double min,double max,TRGBColor *palette, int N)
   double tau,xn,h;
   TRGBColor c={0,0,0};
   if(x<-1e50) return cur_color;
-  if(min==max) return palette[0];
+  if(fabs(min-max)<=0) return palette[0];
 
 //  if(max==min) return palette[N-1];
   h=(max-min)/(N-1);
@@ -506,6 +515,7 @@ TRGBColor BlendColor(double x,double min,double max,TRGBColor *palette, int N)
   return c;
 }
 
+int ReadRGBColor(FILE *fp,TRGBColor * c);
 int ReadRGBColor(FILE *fp,TRGBColor * c)
 {
  unsigned int i;
@@ -521,6 +531,7 @@ int ReadRGBColor(FILE *fp,TRGBColor * c)
 }
 
 
+int ReadPalette(char *fname);
 int ReadPalette(char *fname)
 {
   FILE *fp=fopen(fname,"r");
@@ -545,15 +556,18 @@ int ReadPalette(char *fname)
 }
 
 
+int SetFillColor(FILE *fp,TRGBColor c);
 int SetFillColor(FILE *fp,TRGBColor c)
 {
   return fprintf(fp,"%4.2lf %4.2lf %4.2lf k\n",c.R,c.G,c.B);
 }
+int SetStrokeColor(FILE *fp,TRGBColor c);
 int SetStrokeColor(FILE *fp,TRGBColor c)
 {
   return fprintf(fp,"%4.2lf %4.2lf %4.2lf K\n",c.R,c.G,c.B);
 }
 
+void ShowPalette(FILE *fp);
 void ShowPalette(FILE *fp)
 {
  int i;

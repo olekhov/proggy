@@ -22,7 +22,7 @@ void circles(int e);
 //
 // "Релаксация":
 // Выравнивание количества элементов в узлах
-void relax();
+void relax(void);
 //
 // смена ролей (a,b)<->(c,d). см. рисунок output2.gif
 void swap_side(int s);
@@ -34,23 +34,23 @@ void spacing(int e, int n);
 // Diamond-check:
 // если два соседних элемента окружены четырмя хорошими (или отсутствующими),
 // то оба помечаются как хорошие.
-void diamond();
+void diamond(void);
 //
 // Стирание элементов, сторон и узлов, помеченных как OFF
-void erase();
+void erase(void);
 //
 // Вычисление количества смежных элементов для каждого узла
 // для relax и smooth
-void neighbours();
+void neighbours(void);
 //
 // Сглаживание: каждый узел перемещается в центр своей ячейки, 10 раз
-void smooth();
+void smooth(void);
 //
 // Пометка элементов согласно материалам.
-void materials();
+void materials(void);
 //
 // Классификация элементов: поиск самого плохого
-int classify();
+int classify(void);
 //
 // проверка и приведение триангуляции к виду Делоне
 void bowyer(int n, int spac);

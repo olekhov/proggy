@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
 #include "vars.h"
 #include "renum.h"
@@ -7,9 +8,9 @@
 int periodic=0;
 //
 // Перенумерация узлов, сторон и элементов
-void renum()
+void renum(void)
 {
- int n, o, s, e, e2, c, d, i, j, k, pi,pc=0,ai,bi,ci,di;
+ int n, s, e, c, d, i, j, k, pi,pc=0,ai,bi,ci,di;
  int new_elem=0, new_node=0, new_side=0, next_e, next_s, lowest;
  int total;
 
@@ -40,10 +41,10 @@ printf("renum..\n");
     pc++;
     printf("Pair %d -- %d: (%lf,%lf)--(%lf,%lf)\n",n,pi,node[n].x,node[n].y,node[pi].x,node[pi].y);
   } else node[n].pair=OFF;
-  if(node[n].x==-1 && node[n].y==-1) ai=n;
-  if(node[n].x==-1 && node[n].y== 1) bi=n;
-  if(node[n].x== 1 && node[n].y==-1) di=n;
-  if(node[n].x== 1 && node[n].y== 1) ci=n;
+  if(fabs(node[n].x+1)+fabs(node[n].y+1)<=1e-9) ai=n;
+  if(fabs(node[n].x+1)+fabs(node[n].y-1)<=1e-9) bi=n;
+  if(fabs(node[n].x-1)+fabs(node[n].y+1)<=1e-9) di=n;
+  if(fabs(node[n].x-1)+fabs(node[n].y-1)<=1e-9) ci=n;
  }
  node[ai].pair=bi;
  node[bi].pair=ci;

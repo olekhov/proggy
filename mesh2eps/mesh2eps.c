@@ -24,7 +24,7 @@ typedef struct
 
 
 char epsfname[80];
-Side BBox[2]={{0,0},{400,400}};
+Side BBox[2]={{0,0,0},{400,400,0}};
 Point viewport[2];
 int hasviewport=0;
 void writeleadin(FILE *fp);
@@ -118,7 +118,7 @@ int main(int argc,char *argv[])
 
 void writeleadin(FILE *fp)
 {
-  int x=BBox[1].i,y=BBox[1].j;
+//  int x=BBox[1].i,y=BBox[1].j;
   fprintf(fp,"%s\n","%!PS");
   fprintf(fp,"%s\n","%%Creator: - Created by Mesh2EPS mesh converter Copyright 2002, 2003 Basilio");
   fprintf(fp,"%s %s\n","%%Title:",epsfname);
@@ -154,7 +154,7 @@ int WriteEPS(Point *P,int nP, Side *S,Elem *E,int nS, int nE)
   int s,p; 
   int x,y,flag;
   double lastwidth,width;
-  char *color[]=
+  const char *color[]=
   {
     "0 0 0 0 k",             // белый
     "0.33 0.33 0.25 0.00 k", // фиолетовый
@@ -223,7 +223,7 @@ int WriteEPS(Point *P,int nP, Side *S,Elem *E,int nS, int nE)
    if(S[s].mark!=0)
      width=15.0;
    else  width=1.5;
-   if(lastwidth!=width)
+   if(fabs(lastwidth-width)>0)
     fprintf(fp,"%4.2lf setlinewidth\n",width); // толщина линий. на толщину влияет масштаб
 //   if (S[s].mark==0) fprintf(fp,"%s ","%");
    fprintf(fp,"%4d %4d l\n",x,y); // lineto 

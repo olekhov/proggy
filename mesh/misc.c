@@ -81,7 +81,7 @@ void circles(int e)
 //
 // "Релаксация":
 // Выравнивание количества элементов в узлах
-void relax()
+void relax(void)
 {
  int s, T, E;
  
@@ -219,7 +219,7 @@ void spacing(int e, int n)
 // Diamond-check:
 // если два соседних элемента окружены четырмя хорошими (или отсутствующими),
 // то оба помечаются как хорошие.
-void diamond()
+void diamond(void)
 {
  int ea, eb, eac, ead, ebc, ebd, s;
  
@@ -249,11 +249,11 @@ void diamond()
 }
 //
 // Стирание элементов, сторон и узлов, помеченных как OFF
-void erase()
+void erase(void)
 {
  int s, n, e;
  
- int a, b, c, d, ea, eb;
+ int a, b, c ;
  
 /*--------------------------+
 |                           |
@@ -312,7 +312,7 @@ void erase()
 //
 // Вычисление количества смежных элементов для каждого узла
 // для relax и smooth
-void neighbours()
+void neighbours(void)
 {
  int s;
  
@@ -329,7 +329,7 @@ void neighbours()
  
 //
 // Сглаживание: каждый узел перемещается в центр своей ячейки, 10 раз
-void smooth()
+void smooth(void)
 {
  int it, s, n, e;
  
@@ -360,7 +360,7 @@ void smooth()
 double g_ratio;
 //
 // Классификация элементов
-int classify()
+int classify(void)
 /*----------------------------------------------------------+
 |  This function searches through all elements every time.  |
 |  Some optimisation will definitely bee needed             |
@@ -456,9 +456,9 @@ int classify()
 
 //
 // Пометка элементов согласно материалам.
-void materials()
+void materials(void)
 {
- int e, c, mater, iter, over, s;
+ int e, c, mater, over;
  int ei, ej, ek, si, sj, sk;
 
  for(e=0; e<Ne; e++)
@@ -525,8 +525,9 @@ void materials()
 // проверка и приведение триангуляции к виду Делоне
 void bowyer(int n, int spac)
 {
- int e, i, s, swap;
+ int e, s, swap;
  struct nod vor;
+ spac=spac;
 
  do
   {

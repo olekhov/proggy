@@ -12,9 +12,11 @@ int ugly;                       /* mora li biti globalna ??? */
 
 
 int insert_node(double x, double y, int spac,
+     int prev_n, int prev_s_mark, int mark, int next_s_mark, int next_n);
+int insert_node(double x, double y, int spac,
      int prev_n, int prev_s_mark, int mark, int next_s_mark, int next_n)
 {
- int    i,j,k,en, n, e,ei,ej,ek, s,si,sj,sk;
+ int    i,j,k, e,ei,ej,ek, s,si,sj,sk;
  double sx, sy;
 
 // printf("inserting node..\n");
@@ -127,14 +129,15 @@ int insert_node(double x, double y, int spac,
 /*-insert_node-------------------------------------------------------------*/
 
 /*=========================================================================*/
-void new_node()
+void new_node(void);
+void new_node(void)
 /*---------------------------------------------------+
 |  This function is very important.                  |
 |  It determines the position of the inserted node.  |
 +---------------------------------------------------*/
 {
- int    s=OFF, n, e;
- double xM, yM, xCa, yCa, p, px, py, q, qx, qy, rhoM, rho_M, d;
+ int    s=OFF, n;
+ double xM, yM, p,  q, qx, qy, rhoM, rho_M, d;
 
  struct nod Ca;
 
@@ -205,16 +208,16 @@ char name[80]; int len;
 
 
 /*=========================================================================*/
-int load()
+int load(void);
+int load(void)
 {
- int  c, n, s, Fl, M, N0, chains, bound,NMat;
- char dummy[80];
+ int  c, n, s, Fl, M, chains, NMat;
  double xmax=-GREAT, xmin=+GREAT, ymax=-GREAT, ymin=+GREAT, xt, yt, gab;
 
  FILE *in;
 
  int m;
- double xO, yO, xN, yN, xC, yC, L, Lx, Ly, dLm, ddL, L_tot;
+ double xO, yO, xN, yN,  L, Lx, Ly, dLm, ddL, L_tot;
  
  int *inserted;
 
@@ -500,7 +503,7 @@ int load()
 
 int main(int argc, char *argv[])
 {
- int arg, ans, d=ON, r=ON, s=ON, dxf=OFF, fig=OFF, m=ON, g=ON, exa=OFF, Nn0;
+ int arg, d=ON, r=ON, s=ON, m=ON, g=ON, exa=OFF, Nn0;
 
  if(argc<2)
   {printf("\n*********************************************************");
