@@ -1,5 +1,5 @@
-CC=mpicc
-LK=mpicc
+CC=gcc
+LK=gcc
 CC_FLAGS=-c -O3
 LK_FLAGS=-lm
 

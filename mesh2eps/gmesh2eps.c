@@ -100,10 +100,10 @@ int main(int argc,char *argv[])
 
  if(bw)
  {
-  ReadPalette(strcat(basefilename,"bw.pal"));
+  ReadPalette(strcat(dirname(basefilename),"bw.pal"));
  } else
  {
-  ReadPalette(strcat(basefilename,"palette.pal"));
+  ReadPalette(strcat(dirname(basefilename),"palette.pal"));
  }
  if(discrete) levels=PalSize;
 

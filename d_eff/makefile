@@ -5,9 +5,9 @@ LK_FLAGS=-lm
 
 all: d_eff.exe
 
-d_eff.exe: d_eff.c d_eff.o
+d_eff.exe: d_eff.c d_eff.o makefile
 	$(LK) $(LK_FLAGS) d_eff.o -o d_eff.exe
-	cp d_eff.exe ~/.bin
+	cp d_eff.exe ~/bin
     
 .c.obj: 
 	$(CC) $(CC_FLAGS) $<

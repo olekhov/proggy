@@ -5,9 +5,9 @@ LK_FLAGS=-lm
 
 all: genpsi.exe
 
-genpsi.exe: genpsi.c genpsi.o
+genpsi.exe: genpsi.c genpsi.o makefile
 	$(LK) $(LK_FLAGS) genpsi.o -o genpsi.exe
-	cp genpsi.exe ~/.bin
+	cp genpsi.exe ~/bin
     
 .c.obj: 
 	$(CC) $(CC_FLAGS) $<

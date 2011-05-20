@@ -73,7 +73,7 @@ int main(int argc,char *argv[])
  fp=fopen(buf,"r");
  if(fp==NULL)
  {
-  printf("ç• ≠†©§•≠ ‰†©´ · ÆØ®·†≠®•¨ ¨†‚•‡®†´Æ¢\n");
+  printf("–ù–µ –Ω–∞–π–¥–µ–Ω —Ñ–∞–π–ª —Å –æ–ø–∏—Å–∞–Ω–∏–µ–º –º–∞—Ç–µ—Ä–∏–∞–ª–æ–≤\n");
   return -1;
  }
  fscanf(fp,"%d",&nMat);
@@ -89,7 +89,7 @@ int main(int argc,char *argv[])
  fp=fopen(buf,"r");
  if(!fp)
  {
-  printf("í‡®†≠£„´ÔÊ®Ô ≠• ØÆ·‚‡Æ•≠†! ®·ØÆ´Ïß„©‚• Mesh.exe\n");
+  printf("–¢—Ä–∏–∞–Ω–≥—É–ª—è—Ü–∏—è –Ω–µ –ø–æ—Å—Ç—Ä–æ–µ–Ω–∞! –∏—Å–ø–æ–ª—å–∑—É–π—Ç–µ Mesh.exe\n");
   return -1;
  }
  fscanf(fp,"%d",&nP);
@@ -147,17 +147,17 @@ int main(int argc,char *argv[])
  X=malloc(nP*sizeof(double));
  if(!K || !F || !X)
  {
-   printf("éË®°™† ¢Î§•´•≠®Ô Ø†¨Ô‚®.\n");
+   printf("–û—à–∏–±–∫–∞ –≤—ã–¥–µ–ª–µ–Ω–∏—è –ø–∞–º—è—Ç–∏.\n");
    return -1;
  }
  invar1=invar2=0;
  l1=l2=0;
  // ===============================================
- // ê•Ë•≠®• §´Ô N1
+ // –†–µ—à–µ–Ω–∏–µ –¥–ª—è N1
  for(i=0;i<nP*(2*Diag+1);i++) K[i]=0;
  for(i=0;i<nP;i++) F[i]=0;
  for(i=0;i<nP;i++) X[i]=0;
- // ØÆ·‚‡Æ•≠®• ¨†‚‡®ÊÎ ¶Ò·‚™Æ·‚®
+ // –ø–æ—Å—Ç—Ä–æ–µ–Ω–∏–µ –º–∞—Ç—Ä–∏—Ü—ã –∂—ë—Å—Ç–∫–æ—Å—Ç–∏
  for(e=0;e<nE;e++)
  {
   i=E[e].i; j=E[e].j; k=E[e].k;
@@ -165,7 +165,7 @@ int main(int argc,char *argv[])
 
   if(E[e].mark<0)
   {
-   printf("ç• ¢·• ØÆ§Æ°´†·‚® ®¨•Ó‚ ¨†‚•‡®†´!\n");
+   printf("–ù–µ –≤—Å–µ –ø–æ–¥–æ–±–ª–∞—Å—Ç–∏ –∏–º–µ—é—Ç –º–∞—Ç–µ—Ä–∏–∞–ª!\n");
    return -1;
   }
 
@@ -189,7 +189,7 @@ int main(int argc,char *argv[])
 
 //  if(E[e].mark!=2) continue;
 
-  if(S[E[e].sk].mark==2) // ·‚Æ‡Æ≠† i-j
+  if(S[E[e].sk].mark==2) // —Å—Ç–æ—Ä–æ–Ω–∞ i-j
   {
     ea=S[E[e].sk].ea; eb=S[E[e].sk].eb;
     ma1=  ea >=0 ? Mat[E[ea].mark].D11 :0;
@@ -202,7 +202,7 @@ int main(int argc,char *argv[])
      printf("got 0\n");
     }
 
-//    printf("Ì´•¨. %d ·‚Æ‡Æ≠† k %d: ·†¨ : %d, ØÆ ‚„ ·‚Æ‡Æ≠„: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
+//    printf("—ç–ª–µ–º. %d —Å—Ç–æ—Ä–æ–Ω–∞ k %d: —Å–∞–º : %d, –ø–æ —Ç—É —Å—Ç–æ—Ä–æ–Ω—É: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
     Q=(ma1-mb1)*S[E[e].sk].nx+
       (ma2-mb2)*S[E[e].sk].ny;
     printf("Q:%lf\n",Q);
@@ -216,7 +216,7 @@ int main(int argc,char *argv[])
     invar1+=Q;
     l1+=S[E[e].sk].nx;
   }
-  if(S[E[e].si].mark==2) // ·‚Æ‡Æ≠† j-k
+  if(S[E[e].si].mark==2) // —Å—Ç–æ—Ä–æ–Ω–∞ j-k
   {
 
     ea=S[E[e].si].ea; eb=S[E[e].si].eb;
@@ -229,7 +229,7 @@ int main(int argc,char *argv[])
     {
      printf("got 0\n");
     }
-//    printf("Ì´•¨. %d ·‚Æ‡Æ≠† k %d: ·†¨ : %d, ØÆ ‚„ ·‚Æ‡Æ≠„: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
+//    printf("—ç–ª–µ–º. %d —Å—Ç–æ—Ä–æ–Ω–∞ k %d: —Å–∞–º : %d, –ø–æ —Ç—É —Å—Ç–æ—Ä–æ–Ω—É: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
     Q=(ma1-mb1)*S[E[e].si].nx+
       (ma2-mb2)*S[E[e].si].ny;
     printf("Q:%lf\n",Q);
@@ -242,7 +242,7 @@ int main(int argc,char *argv[])
     invar1+=Q;
     l1+=S[E[e].si].nx;
   }
-  if(S[E[e].sj].mark==2) // ·‚Æ‡Æ≠† k-i
+  if(S[E[e].sj].mark==2) // —Å—Ç–æ—Ä–æ–Ω–∞ k-i
   {
     ea=S[E[e].sj].ea; eb=S[E[e].sj].eb;
     ma1=  ea >=0 ? Mat[E[ea].mark].D11 :0;
@@ -254,7 +254,7 @@ int main(int argc,char *argv[])
      printf("got 0\n");
     }
 
-//    printf("Ì´•¨. %d ·‚Æ‡Æ≠† k %d: ·†¨ : %d, ØÆ ‚„ ·‚Æ‡Æ≠„: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
+//    printf("—ç–ª–µ–º. %d —Å—Ç–æ—Ä–æ–Ω–∞ k %d: —Å–∞–º : %d, –ø–æ —Ç—É —Å—Ç–æ—Ä–æ–Ω—É: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
     Q=(ma1-mb1)*S[E[e].sj].nx+
       (ma2-mb2)*S[E[e].sj].ny;
     printf("Q:%lf\n",Q);
@@ -269,7 +269,7 @@ int main(int argc,char *argv[])
   }
  }
 
- // ß†§†≠®• ™‡†•¢Æ£Æ „·´Æ¢®Ô
+ // –∑–∞–¥–∞–Ω–∏–µ –∫—Ä–∞–µ–≤–æ–≥–æ —É—Å–ª–æ–≤–∏—è
  for(i=0;i<nP;i++)
  {
   if(P[i].mark==1)
@@ -293,7 +293,7 @@ int main(int argc,char *argv[])
 // PM(K,nP,Diag,F);
  // ===============================================
 
- printf("ç†ÂÆ¶§•≠®• ‡•Ë•≠®Ô N1..");
+ printf("–ù–∞—Ö–æ–∂–¥–µ–Ω–∏–µ —Ä–µ—à–µ–Ω–∏—è N1..");
  DiagGSolve(K,nP,Diag,X,F);
  printf("Ok\n");
  sprintf(buf,"%s.n1",fname);
@@ -316,11 +316,11 @@ int main(int argc,char *argv[])
  fclose(fp);
 
  // ===============================================
- // ê•Ë•≠®• §´Ô N2
+ // –†–µ—à–µ–Ω–∏–µ –¥–ª—è N2
  for(i=0;i<nP*(2*Diag+1);i++) K[i]=0;
  for(i=0;i<nP;i++) F[i]=0;
  for(i=0;i<nP;i++) X[i]=0;
- // ØÆ·‚‡Æ•≠®• ¨†‚‡®ÊÎ ¶Ò·‚™Æ·‚®
+ // –ø–æ—Å—Ç—Ä–æ–µ–Ω–∏–µ –º–∞—Ç—Ä–∏—Ü—ã –∂—ë—Å—Ç–∫–æ—Å—Ç–∏
  for(e=0;e<nE;e++)
  {
   i=E[e].i; j=E[e].j; k=E[e].k;
@@ -328,7 +328,7 @@ int main(int argc,char *argv[])
 //  A=0.5;
   if(E[e].mark<0)
   {
-   printf("ç• ¢·• ØÆ§Æ°´†·‚® ®¨•Ó‚ ¨†‚•‡®†´!\n");
+   printf("–ù–µ –≤—Å–µ –ø–æ–¥–æ–±–ª–∞—Å—Ç–∏ –∏–º–µ—é—Ç –º–∞—Ç–µ—Ä–∏–∞–ª!\n");
    return -1;
   }
 
@@ -352,7 +352,7 @@ int main(int argc,char *argv[])
 //  */
 //  if(E[e].mark!=2) continue;
 
-  if(S[E[e].sk].mark==2) // ·‚Æ‡Æ≠† i-j
+  if(S[E[e].sk].mark==2) // —Å—Ç–æ—Ä–æ–Ω–∞ i-j
   {
     ea=S[E[e].sk].ea; eb=S[E[e].sk].eb;
     ma1=  ea >=0 ? Mat[E[ea].mark].D21 :0;
@@ -360,7 +360,7 @@ int main(int argc,char *argv[])
     mb1=  eb >=0 ? Mat[E[eb].mark].D21 :0;
     mb2=  eb >=0 ? Mat[E[eb].mark].D22 :0;
 
-//    printf("Ì´•¨. %d ·‚Æ‡Æ≠† k %d: ·†¨ : %d, ØÆ ‚„ ·‚Æ‡Æ≠„: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
+//    printf("—ç–ª–µ–º. %d —Å—Ç–æ—Ä–æ–Ω–∞ k %d: —Å–∞–º : %d, –ø–æ —Ç—É —Å—Ç–æ—Ä–æ–Ω—É: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
     Q=(ma1-mb1)*S[E[e].sk].nx+
       (ma2-mb2)*S[E[e].sk].ny;
     a2[E[e].sk]+=Q;
@@ -369,7 +369,7 @@ int main(int argc,char *argv[])
     invar2+=Q;
     l2+=S[E[e].sk].ny;
   }
-  if(S[E[e].si].mark==2) // ·‚Æ‡Æ≠† j-k
+  if(S[E[e].si].mark==2) // —Å—Ç–æ—Ä–æ–Ω–∞ j-k
   {
     ea=S[E[e].si].ea; eb=S[E[e].si].eb;
     ma1=  ea >=0 ? Mat[E[ea].mark].D21 :0;
@@ -377,7 +377,7 @@ int main(int argc,char *argv[])
     mb1=  eb >=0 ? Mat[E[eb].mark].D21 :0;
     mb2=  eb >=0 ? Mat[E[eb].mark].D22 :0;
 
-//    printf("Ì´•¨. %d ·‚Æ‡Æ≠† k %d: ·†¨ : %d, ØÆ ‚„ ·‚Æ‡Æ≠„: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
+//    printf("—ç–ª–µ–º. %d —Å—Ç–æ—Ä–æ–Ω–∞ k %d: —Å–∞–º : %d, –ø–æ —Ç—É —Å—Ç–æ—Ä–æ–Ω—É: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
     Q=(ma1-mb1)*S[E[e].si].nx+
       (ma2-mb2)*S[E[e].si].ny;
     a2[E[e].si]+=Q;
@@ -386,7 +386,7 @@ int main(int argc,char *argv[])
     invar2+=Q;
     l2+=S[E[e].si].ny;
   }
-  if(S[E[e].sj].mark==2) // ·‚Æ‡Æ≠† k-i
+  if(S[E[e].sj].mark==2) // —Å—Ç–æ—Ä–æ–Ω–∞ k-i
   {
     ea=S[E[e].sj].ea; eb=S[E[e].sj].eb;
     ma1=  ea >=0 ? Mat[E[ea].mark].D21 :0;
@@ -394,7 +394,7 @@ int main(int argc,char *argv[])
     mb1=  eb >=0 ? Mat[E[eb].mark].D21 :0;
     mb2=  eb >=0 ? Mat[E[eb].mark].D22 :0;
 
-//    printf("Ì´•¨. %d ·‚Æ‡Æ≠† k %d: ·†¨ : %d, ØÆ ‚„ ·‚Æ‡Æ≠„: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
+//    printf("—ç–ª–µ–º. %d —Å—Ç–æ—Ä–æ–Ω–∞ k %d: —Å–∞–º : %d, –ø–æ —Ç—É —Å—Ç–æ—Ä–æ–Ω—É: %d\n",e,E[e].sk,E[e].mark,E[E[e].ek].mark);
     Q=(ma1-mb1)*S[E[e].sj].nx+
       (ma2-mb2)*S[E[e].sj].ny;
     a2[E[e].sj]+=Q;
@@ -405,7 +405,7 @@ int main(int argc,char *argv[])
   }
  }
 
- // ß†§†≠®• ™‡†•¢Æ£Æ „·´Æ¢®Ô
+ // –∑–∞–¥–∞–Ω–∏–µ –∫—Ä–∞–µ–≤–æ–≥–æ —É—Å–ª–æ–≤–∏—è
 // /*
  for(i=0;i<nP;i++)
  {
@@ -430,7 +430,7 @@ int main(int argc,char *argv[])
  // ===============================================
 // PM(K,nP,Diag,F);
  // ===============================================
- printf("ç†ÂÆ¶§•≠®• ‡•Ë•≠®Ô N2..");
+ printf("–ù–∞—Ö–æ–∂–¥–µ–Ω–∏–µ —Ä–µ—à–µ–Ω–∏—è N2..");
  DiagGSolve(K,nP,Diag,X,F);
  printf("Ok\n");
  sprintf(buf,"%s.n2",fname);
