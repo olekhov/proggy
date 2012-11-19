@@ -1,7 +1,7 @@
 CC=gcc
 LK=gcc
-CC_FLAGS=-c -O3
-LK_FLAGS=-lm
+CC_FLAGS=-c
+LK_FLAGS=
 
 all: mesh2eps.exe dmesh2eps.exe gmesh2eps.exe
 
