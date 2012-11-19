@@ -4,6 +4,7 @@ CC_FLAGS=-g -c
 LK_FLAGS=-lm -g
 
 all: mesh2eps.exe dmesh2eps.exe gmesh2eps.exe
+	cp *.exe ~/bin
 
 gmesh2eps.exe: gmesh2eps.o
 	$(LK) $(LK_FLAGS) gmesh2eps.o -o gmesh2eps.exe

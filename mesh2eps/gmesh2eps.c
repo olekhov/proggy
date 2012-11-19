@@ -63,8 +63,8 @@ int main(int argc,char *argv[])
  int arg=0;
  char *basefilename=argv[0];
  printf("%s\n",argv[0]);
- for(i=strlen(argv[0])-1;i>0;i--) if(argv[0][i]=='\\') break;
- argv[0][i+1]=0;
+ for(i=strlen(argv[0])-1;i>0;i--) if(argv[0][i]=='/') break;
+ argv[0][i+3]=0;
  printf("%s\n",argv[0]);
 
 
@@ -100,10 +100,10 @@ int main(int argc,char *argv[])
 
  if(bw)
  {
-  ReadPalette(strcat(dirname(basefilename),"bw.pal"));
+  ReadPalette(strcat(dirname(basefilename),"/bw.pal"));
  } else
  {
-  ReadPalette(strcat(dirname(basefilename),"palette.pal"));
+  ReadPalette(strcat(dirname(basefilename),"/palette.pal"));
  }
  if(discrete) levels=PalSize;
 
